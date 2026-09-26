@@ -1,14 +1,18 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    remotePatterns: [
+module.exports = {
+  poweredByHeader: false,
+  images: { imageSizes: [32, 48, 64, 96, 128, 256, 384, 480] },
+  async headers() {
+    return [
       {
-        hostname: "media.licdn.com",
+        source: '/:path*',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+        ],
       },
-      
-      
-    ],
-  }
+    ];
+  },
 };
-
-module.exports = nextConfig;

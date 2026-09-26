@@ -1,47 +1,23 @@
-"use server";
-
-import React from "react";
-import { Resend } from "resend";
-import { validateString, getErrorMessage } from "@/lib/utils";
-import ContactFormEmail from "@/email/contact-form-email";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-export const sendEmail = async (formData: FormData) => {
-  const senderEmail = formData.get("senderEmail");
-  const message = formData.get("message");
-
-  // simple server-side validation
-  if (!validateString(senderEmail, 500)) {
-    return {
-      error: "Invalid sender email",
-    };
-  }
-  if (!validateString(message, 5000)) {
-    return {
-      error: "Invalid message",
-    };
-  }
-
-  let data;
-  try {
-    data = await resend.emails.send({
-      from: "Portfolio Message<onboarding@resend.dev>",
-      to: "sumanmaharana222888@gmail.com",
-      subject: "Message from your portfolio",
-      reply_to: senderEmail,
-      react: React.createElement(ContactFormEmail, {
-        message: message,
-        senderEmail: senderEmail,
-      }),
-    });
-  } catch (error: unknown) {
-    return {
-      error: getErrorMessage(error),
-    };
-  }
-
-  return {
-    data,
-  };
-};
+'use server';
+import { Resend } from 'resend';
+import type { ContactState } from '@/lib/contact';
+import { submitContact } from '@/lib/contact-service';
+export async function sendEmail(_previous: ContactState, form: FormData): Promise<ContactState> {
+  const key = process.env.RESEND_API_KEY;
+  const from = process.env.CONTACT_FROM;
+  const to = process.env.CONTACT_TO;
+  return submitContact(form, {
+    configured: Boolean(key && from && to),
+    deliver: async ({ senderEmail, message }) => {
+      if (!key || !from || !to) return false;
+      const { data, error } = await new Resend(key).emails.send({
+        from,
+        to,
+        replyTo: senderEmail,
+        subject: 'New portfolio message',
+        text: `Reply to: ${senderEmail}\n\n${message}`,
+      });
+      return Boolean(data?.id && !error);
+    },
+  });
+}

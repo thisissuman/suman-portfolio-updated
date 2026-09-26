@@ -1,18 +1,33 @@
-"use client";
+'use client';
+import { useSyncExternalStore } from 'react';
+import { SunIcon, MoonIcon } from '@phosphor-icons/react';
+import { useTheme } from 'next-themes';
 
-import { useTheme } from "@/context/theme-context";
-import React from "react";
-import { BsMoon, BsSun } from "react-icons/bs";
+const subscribe = () => () => {};
 
-export default function ThemeSwitch() {
-  const { theme, toggleTheme } = useTheme();
+type ThemeSwitchProps = {
+  className?: string;
+};
 
+export default function ThemeSwitch({ className = '' }: ThemeSwitchProps) {
+  const mounted = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  );
+  const { resolvedTheme, setTheme } = useTheme();
+  const currentTheme = mounted ? resolvedTheme : 'dark';
+  const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  const Icon = currentTheme === 'dark' ? MoonIcon : SunIcon;
   return (
     <button
-      className="fixed bottom-5 right-5 bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-40 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950"
-      onClick={toggleTheme}
+      type="button"
+      className={`theme-switch ${className}`.trim()}
+      onClick={() => setTheme(nextTheme)}
+      aria-label={`Switch to ${nextTheme} theme`}
+      title={`Switch to ${nextTheme} theme`}
     >
-      {theme === "light" ? <BsSun /> : <BsMoon />}
+      <Icon className="theme-icon" size={21} weight="fill" aria-hidden="true" />
     </button>
   );
 }

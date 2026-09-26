@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-26T07:21:29.538910+00:00",
+  "title": "Design System: Suman Maharana Portfolio",
+  "extensions": {
+    "shadows": [
+      {
+        "name": "selected-theme",
+        "value": "0 2px 6px #00000012",
+        "purpose": "Selected native theme segment."
+      },
+      {
+        "name": "detail-light",
+        "value": "0 12px 30px #20282b08",
+        "purpose": "Optional career and toolkit hover elevation."
+      },
+      {
+        "name": "detail-dark",
+        "value": "0 12px 30px #00000018",
+        "purpose": "Dark theme detail hover elevation."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.22,1,.36,1)",
+        "purpose": "Optional CSS movement."
+      },
+      {
+        "name": "hover-duration",
+        "value": ".25s",
+        "purpose": "Button hover transforms."
+      },
+      {
+        "name": "navigation-duration",
+        "value": ".2s",
+        "purpose": "Active underline transition."
+      },
+      {
+        "name": "hero-arrival",
+        "value": ".65s",
+        "purpose": "Single 10px arrival, only without reduced motion."
+      },
+      {
+        "name": "project-image-duration",
+        "value": "0.6s",
+        "purpose": "Optional project image scale within its clipped stage."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-desktop-max",
+        "value": "1023px"
+      },
+      {
+        "name": "mobile-max",
+        "value": "767px"
+      },
+      {
+        "name": "narrow-mobile-max",
+        "value": "359px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary action",
+      "html": "<button class=\"ds-button-primary\">View projects <span aria-hidden=\"true\">\u2197</span></button>",
+      "css": ".ds-button-primary{font-family:var(--font-manrope,Arial),sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:48px;padding:11px 23px;border-radius:7px;font-size:13px;font-weight:700;border:1px solid transparent;cursor:pointer;background:var(--accent,#efce62);color:var(--accent-ink,#24231b);}.ds-button-primary:focus-visible{outline:2px solid var(--focus,#75601c);outline-offset:5px;}@media(prefers-reduced-motion:no-preference){.ds-button-primary{transition:transform .25s cubic-bezier(.22,1,.36,1);}.ds-button-primary:hover{transform:translateY(-2px);}}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Secondary outlined action",
+      "html": "<button class=\"ds-button-secondary\">View projects <span aria-hidden=\"true\">\u2197</span></button>",
+      "css": ".ds-button-secondary{font-family:var(--font-manrope,Arial),sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:24px;min-height:48px;padding:11px 23px;border-radius:7px;font-size:13px;font-weight:700;border:1px solid transparent;cursor:pointer;background:transparent;color:var(--foreground,#20282b);border-color:var(--border,#d5dbdd);}.ds-button-secondary:focus-visible{outline:2px solid var(--focus,#75601c);outline-offset:5px;}@media(prefers-reduced-motion:no-preference){.ds-button-secondary{transition:transform .25s cubic-bezier(.22,1,.36,1);}.ds-button-secondary:hover{transform:translateY(-2px);}}"
+    },
+    {
+      "name": "Email input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Visible label and native email control.",
+      "html": "<label class=\"ds-label\" for=\"ds-email\">Your email</label><input class=\"ds-input\" id=\"ds-email\" type=\"email\" placeholder=\"you@example.com\">",
+      "css": ".ds-label{font-family:var(--font-manrope,Arial),sans-serif;display:block;font-size:12px;font-weight:650;margin-bottom:10px;color:var(--foreground,#20282b);}.ds-input{font-family:var(--font-manrope,Arial),sans-serif;width:100%;border:1px solid var(--border,#d5dbdd);color:var(--foreground,#20282b);background:var(--background,#f3f4f0);padding:13px 15px;border-radius:7px;font-size:16px;}.ds-input::placeholder{color:var(--muted,#586166);font-size:13px;}.ds-input:focus-visible{outline:2px solid var(--focus,#75601c);outline-offset:5px;}.ds-input[aria-invalid=true]{border-color:var(--error,#a42929);}"
+    },
+    {
+      "name": "Technology tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Static technology label; no selected or hover state.",
+      "html": "<span class=\"ds-tag\">TypeScript</span>",
+      "css": ".ds-tag{font-family:var(--font-manrope,Arial),sans-serif;display:inline-block;font-size:10px;padding:4px 10px;border:1px solid var(--border,#d5dbdd);border-radius:5px;color:var(--muted,#586166);}"
+    },
+    {
+      "name": "Section navigation",
+      "kind": "nav",
+      "description": "Native links with an active location underline and neutral selected surface.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Sections\"><a href=\"#projects\" aria-current=\"location\">Projects</a><a href=\"#about\">About</a><a href=\"#contact\">Contact</a></nav>",
+      "css": ".ds-nav{display:flex;gap:12px;}.ds-nav a{font-family:var(--font-manrope,Arial),sans-serif;display:inline-flex;align-items:center;min-height:44px;padding:8px;border-radius:6px;font-size:13px;color:var(--muted,#586166);position:relative;text-decoration:none;}.ds-nav a:hover,.ds-nav a[aria-current]{color:var(--foreground,#20282b);}.ds-nav a[aria-current]::after{content:\"\";position:absolute;left:8px;right:8px;bottom:3px;height:2px;background:var(--focus,#75601c);}.ds-nav a:focus-visible{outline:2px solid var(--focus,#75601c);outline-offset:5px;}.ds-nav a[aria-current]{background:var(--surface-alt,#edf0f1);}"
+    },
+    {
+      "name": "Open project details",
+      "kind": "card",
+      "refersTo": "project-spread",
+      "description": "Text half of an open image-and-description spread.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-details\"><p class=\"ds-status\">Personal project</p><h3>Project title</h3><p class=\"ds-description\">A short, factual description of the interface.</p><a href=\"#projects\">Source code \u2197</a></div></article>",
+      "css": ".ds-card{font-family:var(--font-manrope,Arial),sans-serif;background:transparent;border:0;border-radius:0;color:var(--foreground,#20282b);}.ds-details{padding:0;}.ds-status{font-size:10px;color:var(--muted,#586166);margin:0 0 5px;}.ds-card h3{font-size:clamp(26px,3vw,38px);line-height:1.4;letter-spacing:-.025em;font-weight:700;margin:0;}.ds-description{font-size:13px;color:var(--muted,#586166);margin:10px 0 0;}.ds-card a{display:inline-flex;align-items:center;min-height:44px;margin-top:20px;font-size:12px;font-weight:650;color:inherit;text-decoration:none;}.ds-card a:hover{text-decoration:underline;text-underline-offset:.3em;}.ds-card a:focus-visible{outline:2px solid var(--focus,#75601c);outline-offset:5px;}"
+    },
+    {
+      "name": "Theme switch",
+      "kind": "custom",
+      "refersTo": "theme-switch",
+      "description": "Single accessible icon button for switching between Light and Dark.",
+      "html": "<button class=\"ds-theme\" type=\"button\" aria-label=\"Switch to light theme\"><svg aria-hidden=\"true\"></svg></button>",
+      "css": ".ds-theme{display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid var(--border,#d5dbdd);border-radius:50%;background:var(--surface-alt,#edf0f1);color:var(--foreground,#20282b);box-shadow:0 18px 42px #0000001f}.ds-theme:focus-visible{outline:2px solid var(--focus,#75601c);outline-offset:5px}"
+    },
+    {
+      "name": "Ruled toolkit category",
+      "kind": "custom",
+      "description": "Open category grouping with a Phosphor-style code mark and factual tags.",
+      "html": "<article class=\"ds-tool\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"m8 5-7 7 7 7m8-14 7 7-7 7m-3-16-2 22\"/></svg><h3>Frontend</h3><p>Interfaces and interaction.</p><span>React</span> <span>TypeScript</span></article>",
+      "css": ".ds-tool{border-top:1px solid var(--border,#d5dbdd);padding:30px 0;color:var(--foreground,#20282b);font-family:var(--font-manrope,Arial),sans-serif}.ds-tool svg{color:var(--focus,#75601c)}.ds-tool h3{font-size:20px;margin:17px 0 7px}.ds-tool p{font-size:13px;color:var(--muted,#586166);margin:0 0 24px}.ds-tool span{display:inline-block;font-size:12px;padding:6px 11px;border:1px solid var(--border,#d5dbdd);border-radius:6px;background:var(--surface,#fcfdf9)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A personal frontend studio under an open sky",
+    "overview": "The portfolio feels like a personal frontend studio: a large name, a real portrait and open project spreads establish authorship before decoration. Navy is the default view, with an off-white alternate theme retaining the same hierarchy. Yellow is reserved for actions, focus and small identity details.\n\nThe orbit around the portrait and the projected star sphere share a celestial motif. The sky is a user-requested continuous effect; it never carries information and becomes static for reduced motion. Project imagery, employer identities and readable descriptions remain the evidence. The implemented source is `app/globals.css` and the section components; this document records the final cascade rather than superseded card styles.",
+    "keyCharacteristics": [
+      "Oversized personal identity and circular portrait",
+      "Alternating open project spreads",
+      "Ruled career and toolkit sections",
+      "Native controls and visible navigation",
+      "Theme-aware Canvas 2D stars"
+    ],
+    "rules": [
+      {
+        "name": "The Accent Has a Job Rule",
+        "body": "Use accent for action, focus or identity; category color belongs to toolkit wayfinding.",
+        "section": "colors"
+      },
+      {
+        "name": "The Open Evidence Rule",
+        "body": "Give projects and career content room before adding a container around them.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do reuse semantic CSS variables for coherent light and dark themes.",
+      "Do use the locally stored LinkedIn portrait and official employer assets without recoloring their brands.",
+      "Do preserve visible keyboard focus, native links and labeled form controls.",
+      "Do keep motion optional and all information accessible without it."
+    ],
+    "donts": [
+      "Don't add decorative WebGL, custom cursors or scroll-jacking.",
+      "Don't turn every project, career entry and toolkit category back into an enclosed card.",
+      "Don't invent skill ratings, experience totals or impact metrics.",
+      "Don't describe project cover artwork as a product screenshot."
+    ]
+  }
+}

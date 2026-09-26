@@ -1,16 +1,17 @@
-import React from "react";
-
+import { profile } from '@/content/portfolio';
 export default function Footer() {
   return (
-    <footer className="mb-10 px-4 text-center text-gray-500">
-      <small className="mb-2 block text-xs">
-        &copy; 2024 Suman. All rights reserved.
-      </small>
-      <p className="text-xs">
-        <span className="font-semibold">About this website:</span> built by Suman with ❤ using 
-        React & Next.js (App Router & Server Actions), TypeScript, Tailwind CSS,
-        Framer Motion, React Email & Resend, Vercel hosting.
+    <footer className="container footer">
+      <a className="wordmark" href="#home">
+        suman<span>.</span>
+      </a>
+      <p>
+        © {new Date().getFullYear()} {profile.name}
       </p>
+      <p>Made with Next.js & a little attention to detail.</p>
+      <a href="#home">
+        Back to top <span aria-hidden="true">↑</span>
+      </a>
     </footer>
   );
 }
